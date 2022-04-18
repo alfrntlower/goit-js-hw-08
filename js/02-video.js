@@ -18,14 +18,12 @@ const onPlay = function(data) {
     videoplayerCurrentTime = data.seconds;
 
     console.log(videoplayerCurrentTime);
-    //videoplayer-current-time
+   
     localStorage.setItem(PLAYER_CURRENT_TIME, JSON.stringify(videoplayerCurrentTime));
 
 };
 
 player.on('timeupdate', throttle(onPlay, 1000));
-//player.on('pause', onPlay);
-
 
 player.setCurrentTime(localStorage.getItem(PLAYER_CURRENT_TIME));
 
