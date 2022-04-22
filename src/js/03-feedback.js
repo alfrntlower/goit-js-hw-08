@@ -8,10 +8,7 @@ const FEEDBACK_FROM_STATE = "feedback-form-state";
 
 feedbackForm.addEventListener('submit', onSubmitBtnClick);
 
-const formData = {};
-
 feedbackForm.addEventListener('input', throttle(onSaveFormData, 500));
-
 
 function onSubmitBtnClick(evt) {
     
@@ -31,44 +28,24 @@ function onSubmitBtnClick(evt) {
 }
 
 function onSaveFormData(evt) {
-    console.log(evt.target.name);
-    console.log(evt.target.value);
+
+    const formData = JSON.parse(localStorage.getItem(FEEDBACK_FROM_STATE)) || {};
 
     formData[evt.target.name] = evt.target.value;
 
     localStorage.setItem(FEEDBACK_FROM_STATE, JSON.stringify(formData));
 }
 
-if (localStorage.getItem(FEEDBACK_FROM_STATE)) {     
+onLoadFromData();
 
-    const savedFormData = localStorage.getItem(FEEDBACK_FROM_STATE);
-    const parsedFormData = JSON.parse(savedFormData);
-   
-    const emailParsedFormData = parsedFormData.email;
-    const messageParsedFormData = parsedFormData.message;
+function onLoadFromData() {
+    const parsedFormData = JSON.parse(localStorage.getItem(FEEDBACK_FROM_STATE));
 
+    if (!parsedFormData) return;
 
-    email.value = emailParsedFormData;
-    email.textContent = emailParsedFormData;
-    message.value = messageParsedFormData;
-    message.textContent = messageParsedFormData;
-    console.log(formData);
+    email.value = parsedFormData.email || '';
 
-    //localStorage.setItem(FEEDBACK_FROM_STATE,JSON.stringify(formData));
+    message.value = parsedFormData.message || '';
 
-    // if (email.value === "undefined") {
-    //     email.value = "";
-    // } else {
-    //     email.value = parsedFormData.email;
-    // }
-
-    // if (message.value === "undefined") {
-    //     message.value = "";
-    // } else {
-    //     message.value = parsedFormData.message;
-    // }
-    
-
-       
 }
 
