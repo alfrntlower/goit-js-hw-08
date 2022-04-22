@@ -10,6 +10,8 @@ feedbackForm.addEventListener('submit', onSubmitBtnClick);
 
 feedbackForm.addEventListener('input', throttle(onSaveFormData, 500));
 
+let formData = {};
+
 function onSubmitBtnClick(evt) {
     
     evt.preventDefault();
@@ -29,7 +31,7 @@ function onSubmitBtnClick(evt) {
 
 function onSaveFormData(evt) {
 
-    const formData = JSON.parse(localStorage.getItem(FEEDBACK_FROM_STATE)) || {};
+    formData = JSON.parse(localStorage.getItem(FEEDBACK_FROM_STATE)) || {};
 
     formData[evt.target.name] = evt.target.value;
 
