@@ -2,8 +2,8 @@ goit-js-hw-08
 
 https://alfrntlower.github.io/goit-js-hw-08/
 
-Задание 1 - библиотека SimpleLightbox
+Task 1 - SimpleLightbox library
 
-Задание 2 - видео плеер
+Task 2 - video player
 
-Задание 3 - форма обратной связи
+Task 3 - feedback form
